@@ -2,7 +2,7 @@ import { Search, Bell, Settings } from 'lucide-react';
 
 const TopBar = ({ title }) => {
   return (
-    <header className="h-16 bg-gray-800 border-b border-gray-700 flex items-center justify-between px-3">
+    <header className="h-16 bg-gray-800 flex items-center justify-between px-3">
       <div className="flex items-center">
         <h1 className="text-xl font-bold">{title}</h1>
       </div>
