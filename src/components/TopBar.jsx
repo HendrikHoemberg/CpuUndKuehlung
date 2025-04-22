@@ -1,12 +1,12 @@
-import { Search, Bell, Settings } from 'lucide-react';
+import { Search, Menu } from 'lucide-react';
 
-const TopBar = ({ title }) => {
+const TopBar = ({title}) => {
   return (
-    <header className="h-16 bg-gray-800 flex items-center justify-between px-3">
-      <div className="flex items-center">
-        <h1 className="text-xl font-bold">{title}</h1>
+    <header className="h-14 bg-gray-800 flex items-center justify-between px-3">
+      <div className="flex items-center space-x-4">
+        <h1 className="text-4xl ml-4 font-bold ">{title}</h1>
       </div>
-      
+
       <div className="flex items-center space-x-4">
         <div className="relative">
           <input

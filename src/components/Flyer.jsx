@@ -19,19 +19,12 @@ const Flyer = ({ pages, title }) => {
   return (
     <div className="mx-auto relative w-full h-full max-h-screen">
       <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col w-full h-full">
-        {/* Header */}
-        <div className="p-4 border-b">
-          <h1 className="text-3xl font-bold">{title}</h1>
-        </div>
         
         {/* Content area - using flex-grow to fill available space */}
         <div className="relative flex flex-col flex-grow overflow-hidden">
           {/* Flyer content */}
           <div className="bg-white text-gray-900 flex-grow relative">
-            <div 
-              className="h-full transition-transform duration-700"
-              style={{ transform: `rotateY(${currentPage * -10}deg) translateZ(-${currentPage * 5}px)` }}
-            >
+            <div className="h-full">
               <div className="p-8 h-full overflow-auto">
                 {pages[currentPage]}
               </div>
