@@ -1,11 +1,10 @@
-import { Search, BookOpen } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 const TopBar = ({title}) => {
   return (
     <header className="h-16 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-between px-6 shadow-md z-10">
-      <div className="flex items-center space-x-4">
-        <BookOpen className="text-white opacity-70" size={22} />
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent">{title}</h1>
+      <div className="space-x-4">
+        <h1 className="text-2xl font-bold bg-white bg-clip-text text-transparent">{title}</h1>
       </div>
 
       <div className="flex items-center space-x-4">

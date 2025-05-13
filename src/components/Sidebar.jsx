@@ -1,20 +1,20 @@
-import { Cpu, Fan, Home, Thermometer, Zap } from 'lucide-react';
+import { Cpu, Fan, Home, Thermometer, Zap, BookOpen } from 'lucide-react';
 import React, { useState } from 'react';
 
 const Sidebar = ({ activePage, setActivePage }) => {
   const navItems = [
     { id: 'einfuehrung', icon: Home, tooltip: 'Einführung', color: 'from-blue-400 to-purple-500' },
     { id: 'cpuAufbau', icon: Cpu, tooltip: 'CPU-Aufbau', color: 'from-green-400 to-teal-500' },
-    { id: 'cpuFunktion', icon: Zap, tooltip: 'CPU-Funktionsweise', color: 'from-orange-400 to-pink-500' },
-    { id: 'kuehlmethoden', icon: Fan, tooltip: 'Kühlmethoden', color: 'from-purple-400 to-indigo-600' },
-    { id: 'waermemanagement', icon: Thermometer, tooltip: 'Wärmemanagement', color: 'from-red-400 to-yellow-500' },
+    { id: 'cpuFunktion', icon: Zap, tooltip: 'CPU-Funktionsweise', color: 'from-yellow-400 to-orange-500' },
+    { id: 'kuehlmethoden', icon: Fan, tooltip: 'Kühlmethoden', color: 'from-cyan-300 to-indigo-600' },
+    { id: 'waermemanagement', icon: Thermometer, tooltip: 'Wärmemanagement', color: ' from-amber-600 to-rose-600' },
   ];
 
   return (
     <div className="w-20 bg-gray-900 bg-opacity-60 backdrop-blur-sm flex flex-col items-center py-4 space-y-6 z-20 shadow-xl">
       {/* Logo */}
-      <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg">
-        <Cpu size={24} />
+      <div className="w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg">
+        <BookOpen className="text-white opacity-70" size={22} />
       </div>
 
       <div className="flex flex-col space-y-6 items-center">
