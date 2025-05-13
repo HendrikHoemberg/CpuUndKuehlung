@@ -4,15 +4,16 @@ const CpuFunktion = () => {
   const pages = [
     // CPU Components page
     (
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col space-y-4 h-full">
         <h2 className="text-3xl font-bold pb-2 mb-2 border-b-2 border-gray-200">Funktionsblöcke der CPU</h2>
         
-        <div className="grid grid-cols-3 gap-4 mb-4">
+        <div className="grid grid-cols-3 gap-4 mb-3">
           <div className="text-center">
             <InteractiveImage 
               emoji="🧮" 
               alt="ALU Circuit" 
               description="Die ALU kann in modernen CPUs mehrere Berechnungen parallel ausführen!" 
+              position="bottom"
             />
             <p className="mt-1 text-gray-800">ALU</p>
             <p className="text-xs text-gray-700">Führt Berechnungen und logische Operationen aus</p>
@@ -39,7 +40,7 @@ const CpuFunktion = () => {
           </div>
         </div>
         
-        <div className="bg-white shadow-md p-4 rounded-xl">
+        <div className="bg-white shadow-md p-4 rounded-xl mb-2">
           <h3 className="text-xl font-bold mb-2 text-gray-800">Hauptkomponenten:</h3>
           <div className="grid grid-cols-2 gap-4">
             <div className="rounded-lg p-3 bg-gray-50 shadow-sm">
@@ -60,15 +61,65 @@ const CpuFunktion = () => {
             </div>
           </div>
         </div>
+        
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white shadow-md p-4 rounded-xl">
+            <h3 className="text-xl font-bold mb-2 text-gray-800">Befehlszyklus der CPU</h3>
+            <div className="grid grid-cols-2 gap-2 mb-2">
+              <div className="bg-blue-50 p-2 rounded-lg text-sm text-gray-800">
+                <p className="font-bold">1. Fetch (Abrufen)</p>
+                <p className="text-xs">Die CPU holt den nächsten Befehl aus dem Arbeitsspeicher (RAM) in das Befehlsregister.</p>
+              </div>
+              <div className="bg-green-50 p-2 rounded-lg text-sm text-gray-800">
+                <p className="font-bold">2. Decode (Dekodieren)</p>
+                <p className="text-xs">Die Steuereinheit dekodiert den Befehl und bestimmt die notwendigen Aktionen.</p>
+              </div>
+              <div className="bg-purple-50 p-2 rounded-lg text-sm text-gray-800">
+                <p className="font-bold">3. Execute (Ausführen)</p>
+                <p className="text-xs">Die ALU und andere Komponenten führen den Befehl aus und verarbeiten die Daten.</p>
+              </div>
+              <div className="bg-orange-50 p-2 rounded-lg text-sm text-gray-800">
+                <p className="font-bold">4. Store (Speichern)</p>
+                <p className="text-xs">Die Ergebnisse werden in Registern oder im Arbeitsspeicher abgelegt.</p>
+              </div>
+            </div>
+            <p className="text-xs text-gray-600 italic">Dieser Zyklus wiederholt sich mehrere Milliarden Mal pro Sekunde.</p>
+          </div>
+          
+          <div className="bg-white shadow-md p-4 rounded-xl">
+            <h3 className="text-xl font-bold mb-2 text-gray-800">Cache-Hierarchie</h3>
+            <p className="text-sm text-gray-700 mb-2">Der Cache ist in mehrere Ebenen organisiert:</p>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <div className="w-12 h-8 bg-red-500 rounded-l-lg flex items-center justify-center text-white font-bold">L1</div>
+                <div className="flex-1 h-8 bg-red-100 rounded-r-lg pl-2 flex items-center text-sm">
+                  <span>Kleinster (64-512 KB), schnellster Cache, pro Kern</span>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <div className="w-12 h-8 bg-yellow-500 rounded-l-lg flex items-center justify-center text-white font-bold">L2</div>
+                <div className="flex-1 h-8 bg-yellow-100 rounded-r-lg pl-2 flex items-center text-sm">
+                  <span>Mittelgroß (256 KB-2 MB), meistens pro Kern</span>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <div className="w-12 h-8 bg-green-500 rounded-l-lg flex items-center justify-center text-white font-bold">L3</div>
+                <div className="flex-1 h-8 bg-green-100 rounded-r-lg pl-2 flex items-center text-sm">
+                  <span>Größter (4-64 MB), von allen Kernen geteilt</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     ),
     
     // CPU Architecture Types page
     (
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col space-y-4 h-full">
         <h2 className="text-3xl font-bold pb-2 mb-2 border-b-2 border-gray-200">CPU-Architekturen</h2>
         
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 mb-3">
           <div>
             <h3 className="text-xl font-bold mb-2 flex items-center text-gray-800">
               <span className="mr-2">🔄</span> Single-Core vs. Multi-Core
@@ -128,7 +179,7 @@ const CpuFunktion = () => {
           </div>
         </div>
         
-        <div>
+        <div className="mb-3">
           <h3 className="text-xl font-bold mb-2 flex items-center text-gray-800">
             <span className="mr-2">🏢</span> AMD vs. Intel
           </h3>
@@ -172,15 +223,71 @@ const CpuFunktion = () => {
             </div>
           </div>
         </div>
+        
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white shadow-md p-4 rounded-xl">
+            <h3 className="text-xl font-bold mb-2 text-gray-800">RISC vs. CISC: Details</h3>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="rounded-lg p-3 bg-gray-50 shadow-sm">
+                <h4 className="font-bold mb-1 text-gray-800 text-sm">RISC (Reduced Instruction Set Computer)</h4>
+                <ul className="list-disc list-inside text-xs text-gray-700">
+                  <li>Einfacher Befehlssatz</li>
+                  <li>Feste Befehlslänge</li>
+                  <li>Wenige Adressierungsmodi</li>
+                  <li>Viele Register</li>
+                  <li>Energieeffizient</li>
+                  <li>Beispiele: ARM, MIPS, RISC-V</li>
+                </ul>
+              </div>
+              <div className="rounded-lg p-3 bg-gray-50 shadow-sm">
+                <h4 className="font-bold mb-1 text-gray-800 text-sm">CISC (Complex Instruction Set Computer)</h4>
+                <ul className="list-disc list-inside text-xs text-gray-700">
+                  <li>Komplexer Befehlssatz</li>
+                  <li>Variable Befehlslänge</li>
+                  <li>Viele Adressierungsmodi</li>
+                  <li>Weniger Register</li>
+                  <li>Höhere Leistungsdichte</li>
+                  <li>Beispiele: x86, x86-64</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white shadow-md p-4 rounded-xl">
+            <h3 className="text-xl font-bold mb-2 text-gray-800">Prozessor-Generationen</h3>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="rounded-lg p-2 bg-blue-50 shadow-sm">
+                <h4 className="font-bold text-blue-800 text-sm">Intel</h4>
+                <ul className="list-none text-xs space-y-1 text-gray-700">
+                  <li><strong>10. Gen:</strong> Comet Lake, Ice Lake</li>
+                  <li><strong>11. Gen:</strong> Rocket Lake, Tiger Lake</li>
+                  <li><strong>12. Gen:</strong> Alder Lake</li>
+                  <li><strong>13. Gen:</strong> Raptor Lake</li>
+                  <li><strong>14. Gen:</strong> Meteor Lake</li>
+                </ul>
+              </div>
+              <div className="rounded-lg p-2 bg-red-50 shadow-sm">
+                <h4 className="font-bold text-red-800 text-sm">AMD</h4>
+                <ul className="list-none text-xs space-y-1 text-gray-700">
+                  <li><strong>Zen 1:</strong> Ryzen 1000-Serie</li>
+                  <li><strong>Zen 2:</strong> Ryzen 3000-Serie</li>
+                  <li><strong>Zen 3:</strong> Ryzen 5000-Serie</li>
+                  <li><strong>Zen 4:</strong> Ryzen 7000-Serie</li>
+                  <li><strong>Zen 5:</strong> Kommende Ryzen-Generationen</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     ),
     
     // Performance and Parallelization page
     (
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col space-y-4 h-full">
         <h2 className="text-3xl font-bold pb-2 mb-2 border-b-2 border-gray-200">Leistung & Parallelisierung</h2>
         
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 mb-3">
           <div className="bg-white shadow-md p-4 rounded-xl">
             <h3 className="text-xl font-bold mb-2 text-gray-800">Wichtige Kenngrößen</h3>
             <ul className="space-y-1 text-gray-700 text-sm">
@@ -208,7 +315,7 @@ const CpuFunktion = () => {
           </div>
           
           <div className="bg-white shadow-md p-4 rounded-xl">
-            <h3 className="text-xl font-bold mb-2 text-gray-800">MMX & XMM</h3>
+            <h3 className="text-xl font-bold mb-2 text-gray-800">MMX & SIMD-Erweiterungen</h3>
             <div className="flex items-center">
               <div className="text-center mr-3">
                 <InteractiveImage 
@@ -228,7 +335,7 @@ const CpuFunktion = () => {
           </div>
         </div>
         
-        <div className="bg-white shadow-md p-4 rounded-xl">
+        <div className="bg-white shadow-md p-4 rounded-xl mb-3">
           <h3 className="text-xl font-bold mb-2 text-gray-800">Parallelisierung</h3>
           <div className="flex items-center">
             <div className="text-center mr-4">
@@ -246,6 +353,62 @@ const CpuFunktion = () => {
                 <li><b>Instruction-Level Parallelism:</b> Gleichzeitige Ausführung unabhängiger Befehle</li>
                 <li><b>Task-Level Parallelism:</b> Verteilung von Aufgaben auf mehrere Kerne</li>
               </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white shadow-md p-4 rounded-xl">
+            <h3 className="text-xl font-bold mb-2 text-gray-800">Benchmarks & Leistungsmessung</h3>
+            <div className="grid grid-cols-2 gap-3 text-xs">
+              <div className="bg-gray-50 p-2 rounded-lg">
+                <p className="font-bold text-gray-800">Synthetic Benchmarks</p>
+                <ul className="list-disc list-inside text-gray-700">
+                  <li>Cinebench (Rendering)</li>
+                  <li>Geekbench (Allgemein)</li>
+                  <li>3DMark CPU Test</li>
+                  <li>Prime95 (Rechenleistung)</li>
+                </ul>
+              </div>
+              <div className="bg-gray-50 p-2 rounded-lg">
+                <p className="font-bold text-gray-800">Anwendungsbenchmarks</p>
+                <ul className="list-disc list-inside text-gray-700">
+                  <li>Adobe Premiere Rendering</li>
+                  <li>Spieleperformance (FPS)</li>
+                  <li>Kompilierungszeiten</li>
+                  <li>Virtualisierungsleistung</li>
+                </ul>
+              </div>
+            </div>
+            <div className="mt-2 text-xs text-gray-600 italic">
+              Multi-Threading-Performance kann bis zu 32× höher sein als Single-Thread bei voll parallelisierbaren Aufgaben.
+            </div>
+          </div>
+          
+          <div className="bg-white shadow-md p-4 rounded-xl">
+            <h3 className="text-xl font-bold mb-2 text-gray-800">Aktuelle CPU-Entwicklungen</h3>
+            <div className="space-y-2 text-sm">
+              <div className="flex items-center bg-yellow-50 p-2 rounded-lg">
+                <span className="text-xl mr-2">🔄</span>
+                <div>
+                  <p className="font-bold text-gray-800">Heterogene Kerne</p>
+                  <p className="text-xs text-gray-700">Kombination aus leistungsstarken P-Cores und effizienten E-Cores (z.B. Intel Alder Lake+)</p>
+                </div>
+              </div>
+              <div className="flex items-center bg-green-50 p-2 rounded-lg">
+                <span className="text-xl mr-2">🧩</span>
+                <div>
+                  <p className="font-bold text-gray-800">Chiplet-Design</p>
+                  <p className="text-xs text-gray-700">Mehrere kleine Silizium-Dies statt eines großen Monolithen (z.B. AMD Zen)</p>
+                </div>
+              </div>
+              <div className="flex items-center bg-blue-50 p-2 rounded-lg">
+                <span className="text-xl mr-2">🔒</span>
+                <div>
+                  <p className="font-bold text-gray-800">Spezielle Sicherheitshardware</p>
+                  <p className="text-xs text-gray-700">Integrierte Funktionen zur Verschlüsselung und Virtualisierung</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
