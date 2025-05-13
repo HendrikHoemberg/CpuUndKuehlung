@@ -1,80 +1,135 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+const InteractiveImage = ({ emoji, alt, description, position = "top" }) => {
+  const [isHovering, setIsHovering] = useState(false);
+  
+  const positionClasses = {
+    top: "bottom-full mb-2",
+    bottom: "top-full mt-2",
+    left: "right-full mr-2",
+    right: "left-full ml-2"
+  };
+  
+  return (
+    <div className="relative inline-block group" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+      <div className="text-6xl cursor-pointer transition-transform duration-300 hover:scale-110 interactive-emoji">
+        {emoji}
+      </div>
+      
+      {/* Thought bubble */}
+      {isHovering && (
+        <div className={`absolute ${positionClasses[position]} w-48 bg-white text-gray-800 rounded-2xl p-3 shadow-lg 
+          z-50 transition-all duration-300 scale-in thought-bubble border border-gray-200`}>
+          <div className="text-sm font-medium text-gray-700">{description}</div>
+          {/* Comment for image placeholder */}
+          {/* Image */}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Flyer = ({ pages, title }) => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const totalPages = pages.length;
 
   const goToNextPage = () => {
     if (currentPage < pages.length - 1) {
-      setCurrentPage(currentPage + 1);
+      setIsFlipping(true);
+      setTimeout(() => {
+        setCurrentPage(currentPage + 1);
+        setIsFlipping(false);
+      }, 300);
     }
   };
 
   const goToPreviousPage = () => {
     if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
+      setIsFlipping(true);
+      setTimeout(() => {
+        setCurrentPage(currentPage - 1);
+        setIsFlipping(false);
+      }, 300);
     }
   };
 
+  // Color themes
+  const colorThemes = [
+    { bg: "bg-white", text: "text-gray-800", accent: "bg-blue-500" },
+    { bg: "bg-white", text: "text-gray-800", accent: "bg-green-500" },
+    { bg: "bg-white", text: "text-gray-800", accent: "bg-orange-500" },
+    { bg: "bg-white", text: "text-gray-800", accent: "bg-purple-500" },
+    { bg: "bg-white", text: "text-gray-800", accent: "bg-red-500" },
+  ];
+  
+  const theme = colorThemes[currentPage % colorThemes.length];
+  
   return (
-    <div className="mx-auto relative w-full h-full max-h-screen">
-      <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col w-full h-full">
+    <div className="mx-auto relative w-full h-full">
+      <div className={`rounded-xl shadow-xl overflow-hidden flex flex-col w-full h-full 
+                      ${theme.bg} ${theme.text} transition-all duration-500
+                      ${isFlipping ? 'scale-95 opacity-80' : 'scale-100 opacity-100'}`}>
         
-        {/* Content area - using flex-grow to fill available space */}
-        <div className="relative flex flex-col flex-grow overflow-hidden">
+        <div className="absolute top-0 right-0 w-20 h-20 bg-white opacity-10 rounded-full -translate-y-10 translate-x-10"></div>
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-white opacity-10 rounded-full translate-y-16 -translate-x-16"></div>
+        
+        {/* Content area */}
+        <div className="relative flex flex-col flex-grow overflow-hidden p-8">
+          {/* Page number indicator */}
+          <div className="absolute top-2 right-2 bg-gray-100 rounded-full px-3 py-1 text-xs font-bold text-gray-700">
+            {currentPage + 1} / {totalPages}
+          </div>
+          
           {/* Flyer content */}
-          <div className="bg-white text-gray-900 flex-grow relative">
+          <div className="flex-grow relative z-10">
             <div className="h-full">
-              <div className="p-8 h-full overflow-auto">
+              <div className="h-full overflow-auto custom-scrollbar">
                 {pages[currentPage]}
               </div>
             </div>
           </div>
           
           {/* Navigation Controls */}
-          <div className="absolute inset-y-0 left-0 flex items-center">
-            {currentPage > 0 && (
-              <button 
-                onClick={goToPreviousPage}
-                className="bg-gray-700 hover:bg-gray-500 text-white rounded-r-full p-2 shadow-lg"
-                aria-label="Previous page"
-              >
-                <ChevronLeft size={24} />
-              </button>
-            )}
-          </div>
-          
-          <div className="absolute inset-y-0 right-0 flex items-center">
-            {currentPage < pages.length - 1 && (
-              <button 
-                onClick={goToNextPage}
-                className="bg-gray-700 hover:bg-gray-500 text-white rounded-l-full p-2 shadow-lg"
-                aria-label="Next page"
-              >
-                <ChevronRight size={24} />
-              </button>
-            )}
-          </div>
-          
-          {/* Page indicator - positioned with padding to ensure visibility */}
-          {pages.length > 1 && (
-            <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-10 pb-2">
+          <div className="flex justify-between mt-4">
+            <button 
+              onClick={goToPreviousPage}
+              disabled={currentPage === 0}
+              className={`rounded-full p-2 transition-all ${currentPage === 0 ? 'opacity-0 cursor-default' : 'opacity-100 hover:scale-110'} 
+                         ${theme.accent} text-white shadow-lg flex items-center justify-center`}
+              aria-label="Previous page"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            
+            <div className="flex space-x-2">
               {pages.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentPage(index)}
-                  className={`w-3 h-3 rounded-full ${
-                    currentPage === index ? 'bg-green-600' : 'bg-gray-400'
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125
+                    ${currentPage === index ? theme.accent : 'bg-gray-300'}`}
                   aria-label={`Go to page ${index + 1}`}
                 />
               ))}
             </div>
-          )}
+            
+            <button 
+              onClick={goToNextPage}
+              disabled={currentPage === pages.length - 1}
+              className={`rounded-full p-2 transition-all ${currentPage === pages.length - 1 ? 'opacity-0 cursor-default' : 'opacity-100 hover:scale-110'} 
+                        ${theme.accent} text-white shadow-lg flex items-center justify-center`}
+              aria-label="Next page"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
+export { Flyer, InteractiveImage };
 export default Flyer;

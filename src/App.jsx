@@ -2,47 +2,55 @@ import { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
 import Einfuehrung from './pages/Einfuehrung';
+import CpuAufbau from './pages/cpuAufbau';
+import CpuFunktion from './pages/cpuFunktion';
+import Kuehlmethoden from './pages/kuehlmethoden';
+import Waermemanagement from './pages/waermemanagement';
 
 function App() {
   const [activePage, setActivePage] = useState('einfuehrung');
-  const [sidebarMode, setSidebarMode] = useState('praesentation'); // or 'wissen'
 
   const pages = {
     einfuehrung: <Einfuehrung />,
-    wissen: <div>Teste dein Wissen</div>, // placeholder for your quiz content
+    cpuAufbau: <CpuAufbau />,
+    cpuFunktion: <CpuFunktion />,
+    kuehlmethoden: <Kuehlmethoden />,
+    waermemanagement: <Waermemanagement />
   };
 
-  const displayedPage = activePage;
-
   return (
-    <div className="flex h-screen bg-gray-900 text-white">
+    <div className="flex h-screen bg-gradient-to-br from-gray-900 to-indigo-900 text-white overflow-hidden">
       <Sidebar
-        activePage={displayedPage}
+        activePage={activePage}
         setActivePage={setActivePage}
-        sidebarMode={sidebarMode}
-        setSidebarMode={setSidebarMode}
       />
       <div className="flex flex-col flex-1">
         <TopBar
-          title={getTitleForPage(displayedPage)}
-          sidebarMode={sidebarMode}
-          setSidebarMode={setSidebarMode}
+          title={getTitleForPage(activePage)}
         />
-        <main className="flex-1 overflow-y-auto p-6">
-          {pages[displayedPage]}
+        <main className="flex-1 overflow-hidden p-6">
+          <div className="h-full">
+            {pages[activePage]}
+          </div>
         </main>
       </div>
+      
+      {/* Decorative Elements */}
+      <div className="fixed top-0 right-0 -mt-16 -mr-16 w-64 h-64 bg-purple-500 opacity-10 rounded-full"></div>
+      <div className="fixed bottom-0 left-0 -mb-24 -ml-24 w-96 h-96 bg-blue-500 opacity-10 rounded-full"></div>
     </div>
   );
 }
 
 function getTitleForPage(page) {
   const titles = {
-    einfuehrung: "Einführung",
-    wissen: "Teste dein Wissen",
+    einfuehrung: "Einführung in CPU und Kühlung",
+    cpuAufbau: "CPU-Aufbau",
+    cpuFunktion: "CPU-Funktionsweise",
+    kuehlmethoden: "Kühlmethoden",
+    waermemanagement: "Wärmemanagement"
   };
   return titles[page] || page;
 }
-
 
 export default App;

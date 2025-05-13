@@ -5,16 +5,35 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #2d3748; 
+  background: rgba(30, 41, 59, 0.4); 
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4a5568; 
-  border-radius: 4px;
+  background: rgba(148, 163, 184, 0.5); 
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #718096; 
+  background: rgba(148, 163, 184, 0.8); 
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 body {
@@ -23,6 +42,7 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 main > div {
@@ -38,4 +58,79 @@ main > div {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.thought-bubble {
+  animation: scaleIn 0.2s ease-out;
+  transform-origin: bottom center;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.rotate-y-minus-180 {
+  transform: rotateY(-180deg);
+}
+
+.origin-left {
+  transform-origin: left center;
+}
+
+.origin-right {
+  transform-origin: right center;
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.interactive-emoji:hover {
+  animation: wave 1.5s ease-in-out;
+  display: inline-block;
+  transform-origin: 70% 70%;
 }

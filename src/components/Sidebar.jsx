@@ -1,109 +1,48 @@
-import { BookOpenCheck, Cpu, Fan, Home, LayoutDashboard, Menu, Thermometer, Zap } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
+import { Cpu, Fan, Home, Thermometer, Zap } from 'lucide-react';
+import React, { useState } from 'react';
 
-const Sidebar = ({ activePage, setActivePage, sidebarMode, setSidebarMode }) => {
-  const [showModeSwitcher, setShowModeSwitcher] = useState(false);
-  const [navItems, setNavItems] = useState([]);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  const presentationNav = [
-    { id: 'einfuehrung', icon: Home, tooltip: 'Einführung' },
-    { id: 'cpuAufbau', icon: Cpu, tooltip: 'CPU-Aufbau' },
-    { id: 'cpuFunktion', icon: Zap, tooltip: 'CPU-Funktionsweise' },
-    { id: 'kuehlmethoden', icon: Fan, tooltip: 'Kühlmethoden' },
-    { id: 'waermemanagement', icon: Thermometer, tooltip: 'Wärmemanagement' },
+const Sidebar = ({ activePage, setActivePage }) => {
+  const navItems = [
+    { id: 'einfuehrung', icon: Home, tooltip: 'Einführung', color: 'from-blue-400 to-purple-500' },
+    { id: 'cpuAufbau', icon: Cpu, tooltip: 'CPU-Aufbau', color: 'from-green-400 to-teal-500' },
+    { id: 'cpuFunktion', icon: Zap, tooltip: 'CPU-Funktionsweise', color: 'from-orange-400 to-pink-500' },
+    { id: 'kuehlmethoden', icon: Fan, tooltip: 'Kühlmethoden', color: 'from-purple-400 to-indigo-600' },
+    { id: 'waermemanagement', icon: Thermometer, tooltip: 'Wärmemanagement', color: 'from-red-400 to-yellow-500' },
   ];
-
-  const altNav = [
-    {
-      id: 'praesentation',
-      icon: LayoutDashboard,
-      tooltip: 'Präsentation',
-      onClick: () => {
-        setSidebarMode('praesentation');
-        setShowModeSwitcher(false);
-      },
-    },
-    {
-      id: 'wissen',
-      icon: BookOpenCheck,
-      tooltip: 'Teste dein Wissen',
-      onClick: () => {
-        setSidebarMode('wissen');
-        setShowModeSwitcher(false);
-      },
-    },
-  ];
-
-  const isPresentationMode = sidebarMode === 'praesentation';
-
-  // Handle navigation changes with animation
-  useEffect(() => {
-    const currentNav = showModeSwitcher ? altNav : isPresentationMode ? presentationNav : altNav;
-    
-    if (navItems.length > 0 && navItems !== currentNav) {
-      // Start transition
-      setIsTransitioning(true);
-      
-      // After a brief delay, update the navigation items
-      setTimeout(() => {
-        setNavItems(currentNav);
-        // Allow time for the items to fade back in
-        setTimeout(() => {
-          setIsTransitioning(false);
-        }, 100);
-      }, 100);
-    } else {
-      // Initial load - no animation needed
-      setNavItems(currentNav);
-    }
-  }, [showModeSwitcher, isPresentationMode]);
 
   return (
-    <div className="w-20 bg-gray-800 flex flex-col items-center py-2 space-y-4 z-11">
-      {/* Burger Menu Button */}
-      <button
-        onClick={() => {
-          if (isPresentationMode) {
-            setShowModeSwitcher((prev) => !prev);
-          }
-        }}
-        className="w-12 h-12 rounded-2xl flex items-center justify-center text-gray-400 hover:bg-gray-600 hover:text-gray-200 transition-all duration-200"
-      >
-        <Menu size={32} />
-      </button>
+    <div className="w-20 bg-gray-900 bg-opacity-60 backdrop-blur-sm flex flex-col items-center py-4 space-y-6 z-20 shadow-xl">
+      {/* Logo */}
+      <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg">
+        <Cpu size={24} />
+      </div>
 
-      <div className="flex flex-col space-y-4 items-center">
+      <div className="flex flex-col space-y-6 items-center">
         {navItems.map((item) => {
           const IconComponent = item.icon;
-          const isActive =
-            showModeSwitcher
-              ? sidebarMode === item.id
-              : activePage === item.id;
+          const isActive = activePage === item.id;
 
           return (
             <div 
               key={item.id} 
-              className={`group relative transition-all duration-300 ${
-                isTransitioning ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
-              }`}
+              className="group relative transition-all duration-300"
             >
               <button
-                onClick={() =>
-                  item.onClick ? item.onClick() : setActivePage(item.id)
-                }
-                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 ${
-                  isActive
-                    ? 'bg-gray-100 text-gray-900 w-14 h-14'
-                    : 'bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-gray-200'
-                }`}
+                onClick={() => setActivePage(item.id)}
+                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 
+                ${isActive
+                  ? `bg-gradient-to-r ${item.color} text-white shadow-lg`
+                  : 'bg-gray-800 bg-opacity-60 text-gray-300 hover:bg-gray-700 hover:text-white'
+                } ${isActive ? 'scale-110' : 'scale-100'}`}
               >
-                <IconComponent size={isActive ? 28 : 24} />
+                <IconComponent size={isActive ? 24 : 20} />
               </button>
 
               {/* Tooltip */}
-              <div className="absolute left-16 top-2 scale-0 transition-all rounded bg-gray-400 p-2 text-xs text-white z-50 group-hover:scale-100 whitespace-nowrap">
+              <div className="absolute left-16 top-2 scale-0 transition-all rounded-lg bg-white text-gray-800 p-2 text-xs font-medium z-50 group-hover:scale-100 whitespace-nowrap shadow-lg">
                 {item.tooltip}
+                {/* Triangle */}
+                <div className="absolute top-1/2 -left-1 transform -translate-y-1/2 border-t-4 border-t-transparent border-r-8 border-r-white border-b-4 border-b-transparent"></div>
               </div>
             </div>
           );
