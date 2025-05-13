@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const InteractiveImage = ({ emoji, alt, description, position = "top" }) => {
@@ -22,7 +22,6 @@ const InteractiveImage = ({ emoji, alt, description, position = "top" }) => {
         <div className={`absolute ${positionClasses[position]} w-48 bg-white text-gray-800 rounded-2xl p-3 shadow-lg 
           z-50 transition-all duration-300 scale-in thought-bubble border border-gray-200`}>
           <div className="text-sm font-medium text-gray-700">{description}</div>
-          {/* Comment for image placeholder */}
           {/* Image */}
         </div>
       )}
@@ -34,6 +33,22 @@ const Flyer = ({ pages, title }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isFlipping, setIsFlipping] = useState(false);
   const totalPages = pages.length;
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowRight') {
+        goToNextPage();
+      } else if (event.key === 'ArrowLeft') {
+        goToPreviousPage();
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentPage]);
 
   const goToNextPage = () => {
     if (currentPage < pages.length - 1) {
@@ -72,7 +87,7 @@ const Flyer = ({ pages, title }) => {
                       bg-gradient-to-br from-blue-100 via-purple-50 to-pink-50 ${theme.text} transition-all duration-500 relative
                       ${isFlipping ? 'scale-95 opacity-80' : 'scale-100 opacity-100'}`}>
         {/* Transparency overlay */}
-        <div className="absolute inset-0 bg-white opacity-40 pointer-events-none rounded-xl z-0" />
+        <div className="absolute inset-0 bg-white opacity-20 pointer-events-none rounded-xl z-0" />
         {/* Content area */}
         <div className="relative flex flex-col flex-grow overflow-hidden p-8">
           {/* Page number indicator */}

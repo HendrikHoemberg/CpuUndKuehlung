@@ -7,6 +7,7 @@ const TopBar = ({title}) => {
         <h1 className="text-2xl font-bold bg-white bg-clip-text text-transparent">{title}</h1>
       </div>
 
+      {/* TODO: Searchbar functionality */}
       <div className="flex items-center space-x-4">
         <div className="relative">
           <input
