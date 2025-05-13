@@ -11,7 +11,7 @@ function App() {
   const [activePage, setActivePage] = useState('einfuehrung');
 
   const pages = {
-    einfuehrung: <Einfuehrung />,
+    einfuehrung: <Einfuehrung activePage={activePage} setActivePage={setActivePage} />,
     cpuAufbau: <CpuAufbau />,
     cpuFunktion: <CpuFunktion />,
     kuehlmethoden: <Kuehlmethoden />,
@@ -19,12 +19,12 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-gray-900 to-indigo-900 text-white overflow-hidden">
+    <div className="flex h-screen bg-gradient-to-br from-gray-900 to-indigo-900 text-white overflow-hidden relative">
       <Sidebar
         activePage={activePage}
         setActivePage={setActivePage}
       />
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col flex-1 z-10">
         <TopBar
           title={getTitleForPage(activePage)}
         />
@@ -34,10 +34,10 @@ function App() {
           </div>
         </main>
       </div>
-      
-      {/* Decorative Elements */}
-      <div className="fixed top-0 right-0 -mt-16 -mr-16 w-64 h-64 bg-purple-500 opacity-10 rounded-full"></div>
-      <div className="fixed bottom-0 left-0 -mb-24 -ml-24 w-96 h-96 bg-blue-500 opacity-10 rounded-full"></div>
+
+      {/* Decorative Elements (do not block pointer events) */}
+      <div className="fixed top-0 right-0 -mt-16 -mr-16 w-64 h-64 bg-purple-500 opacity-10 rounded-full pointer-events-none z-0"></div>
+      <div className="fixed bottom-0 left-0 -mb-24 -ml-24 w-96 h-96 bg-blue-500 opacity-10 rounded-full pointer-events-none z-0"></div>
     </div>
   );
 }

@@ -16,18 +16,6 @@ const Kuehlmethoden = () => {
               Verschiedene Kühlmethoden bieten unterschiedliche Vor- und Nachteile in Bezug auf Effizienz, Lautstärke und Kosten.
             </p>
           </div>
-          
-          <div className="flex justify-center">
-            <div className="text-center">
-              <InteractiveImage 
-                emoji="❄️" 
-                alt="CPU Cooling" 
-                description="Ohne angemessene Kühlung können CPUs Temperaturen von über 100°C erreichen und sich abschalten." 
-                position="right"
-              />
-              <p className="mt-2 text-gray-800">Effektive Kühlung ist essentiell</p>
-            </div>
-          </div>
         </div>
         
         <div className="bg-white shadow-md p-4 rounded-xl mb-2">
@@ -92,7 +80,7 @@ const Kuehlmethoden = () => {
             <div className="space-y-2">
               <div className="flex items-center">
                 <div className="w-28 flex items-center justify-center">
-                  <div className="h-5 w-full bg-gradient-to-r from-green-500 to-yellow-500 rounded-l-lg"></div>
+                  <div className="h-5 w-full bg-gradient-to-r from-green-500 to-yellow-500 rounded-lg"></div>
                 </div>
                 <div className="flex-1 pl-2">
                   <p className="font-bold text-gray-800 text-sm">30°C - 60°C</p>
@@ -101,7 +89,7 @@ const Kuehlmethoden = () => {
               </div>
               <div className="flex items-center">
                 <div className="w-28 flex items-center justify-center">
-                  <div className="h-5 w-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-l-lg"></div>
+                  <div className="h-5 w-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg"></div>
                 </div>
                 <div className="flex-1 pl-2">
                   <p className="font-bold text-gray-800 text-sm">60°C - 80°C</p>
@@ -110,7 +98,7 @@ const Kuehlmethoden = () => {
               </div>
               <div className="flex items-center">
                 <div className="w-28 flex items-center justify-center">
-                  <div className="h-5 w-full bg-gradient-to-r from-orange-500 to-red-500 rounded-l-lg"></div>
+                  <div className="h-5 w-full bg-gradient-to-r from-orange-500 to-red-500 rounded-lg"></div>
                 </div>
                 <div className="flex-1 pl-2">
                   <p className="font-bold text-gray-800 text-sm">80°C - 90°C</p>
@@ -119,7 +107,7 @@ const Kuehlmethoden = () => {
               </div>
               <div className="flex items-center">
                 <div className="w-28 flex items-center justify-center">
-                  <div className="h-5 w-full bg-red-600 rounded-l-lg"></div>
+                  <div className="h-5 w-full bg-red-600 rounded-lg"></div>
                 </div>
                 <div className="flex-1 pl-2">
                   <p className="font-bold text-gray-800 text-sm">90°C+</p>

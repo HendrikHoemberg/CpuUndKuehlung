@@ -36,7 +36,7 @@ const CpuFunktion = () => {
               description="Register arbeiten bis zu 100-mal schneller als der Hauptspeicher!" 
             />
             <p className="mt-1 text-gray-800">Register</p>
-            <p className="text-xs text-gray-700">Ultraschneller CPU-interner Speicher</p>
+            <p className="text-xs text-gray-700">Schneller CPU-interner Speicher</p>
           </div>
         </div>
         
@@ -53,11 +53,11 @@ const CpuFunktion = () => {
             </div>
             <div className="rounded-lg p-3 bg-gray-50 shadow-sm">
               <h4 className="font-bold mb-1 text-gray-800">Register</h4>
-              <p className="text-sm text-gray-700">Ultraschnelle Speicherplätze innerhalb der CPU für temporäre Daten.</p>
+              <p className="text-sm text-gray-700">Schnelle Speicherplätze innerhalb der CPU für temporäre Daten.</p>
             </div>
             <div className="rounded-lg p-3 bg-gray-50 shadow-sm">
               <h4 className="font-bold mb-1 text-gray-800">Cache</h4>
-              <p className="text-sm text-gray-700">Schneller Zwischenspeicher für häufig genutzte Daten, in mehreren Ebenen (L1, L2, L3).</p>
+              <p className="text-sm text-gray-700">Schneller Zwischenspeicher für häufig genutzte Daten in mehreren Ebenen (L1, L2, L3).</p>
             </div>
           </div>
         </div>

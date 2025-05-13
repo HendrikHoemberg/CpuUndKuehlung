@@ -56,8 +56,8 @@ const Waermemanagement = () => {
             </p>
             <div className="space-y-2">
               <div className="flex items-center">
-                <div className="w-24 flex justify-center">
-                  <div className="h-6 w-full bg-gradient-to-r from-blue-500 to-blue-500 rounded-l-lg"></div>
+                <div className="w-24 flex">
+                  <div className="h-6 w-full bg-gradient-to-r from-blue-500 to-blue-500 rounded-l-lg rounded-r-lg"></div>
                 </div>
                 <div className="flex-1 pl-2">
                   <p className="text-sm text-gray-800">Normale Leistung</p>
@@ -65,8 +65,8 @@ const Waermemanagement = () => {
                 </div>
               </div>
               <div className="flex items-center">
-                <div className="w-24 flex justify-center">
-                  <div className="h-6 w-3/4 bg-gradient-to-r from-yellow-500 to-yellow-500 rounded-l-lg"></div>
+                <div className="w-24 flex">
+                  <div className="h-6 w-3/4 bg-gradient-to-r from-yellow-500 to-yellow-500 rounded-l-lg rounded-r-lg"></div>
                 </div>
                 <div className="flex-1 pl-2">
                   <p className="text-sm text-gray-800">Leichte Drosselung</p>
@@ -74,8 +74,8 @@ const Waermemanagement = () => {
                 </div>
               </div>
               <div className="flex items-center">
-                <div className="w-24 flex justify-center">
-                  <div className="h-6 w-1/2 bg-gradient-to-r from-red-500 to-red-500 rounded-l-lg"></div>
+                <div className="w-24 flex">
+                  <div className="h-6 w-1/2 bg-gradient-to-r from-red-500 to-red-500 rounded-l-lg rounded-r-lg"></div>
                 </div>
                 <div className="flex-1 pl-2">
                   <p className="text-sm text-gray-800">Starke Drosselung</p>

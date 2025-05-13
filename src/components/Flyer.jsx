@@ -57,11 +57,11 @@ const Flyer = ({ pages, title }) => {
 
   // Color themes
   const colorThemes = [
-    { bg: "bg-white", text: "text-gray-800", accent: "bg-blue-500" },
-    { bg: "bg-white", text: "text-gray-800", accent: "bg-green-500" },
-    { bg: "bg-white", text: "text-gray-800", accent: "bg-orange-500" },
-    { bg: "bg-white", text: "text-gray-800", accent: "bg-purple-500" },
-    { bg: "bg-white", text: "text-gray-800", accent: "bg-red-500" },
+    { text: "text-gray-800", accent: "bg-blue-500" },
+    { text: "text-gray-800", accent: "bg-green-500" },
+    { text: "text-gray-800", accent: "bg-orange-500" },
+    { text: "text-gray-800", accent: "bg-purple-500" },
+    { text: "text-gray-800", accent: "bg-red-500" },
   ];
   
   const theme = colorThemes[currentPage % colorThemes.length];
@@ -69,12 +69,10 @@ const Flyer = ({ pages, title }) => {
   return (
     <div className="mx-auto relative w-full h-full">
       <div className={`rounded-xl shadow-xl overflow-hidden flex flex-col w-full h-full 
-                      ${theme.bg} ${theme.text} transition-all duration-500
+                      bg-gradient-to-br from-blue-100 via-purple-50 to-pink-50 ${theme.text} transition-all duration-500 relative
                       ${isFlipping ? 'scale-95 opacity-80' : 'scale-100 opacity-100'}`}>
-        
-        <div className="absolute top-0 right-0 w-20 h-20 bg-white opacity-10 rounded-full -translate-y-10 translate-x-10"></div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-white opacity-10 rounded-full translate-y-16 -translate-x-16"></div>
-        
+        {/* Transparency overlay */}
+        <div className="absolute inset-0 bg-white opacity-40 pointer-events-none rounded-xl z-0" />
         {/* Content area */}
         <div className="relative flex flex-col flex-grow overflow-hidden p-8">
           {/* Page number indicator */}
@@ -103,17 +101,19 @@ const Flyer = ({ pages, title }) => {
               <ChevronLeft size={24} />
             </button>
             
-            <div className="flex space-x-2">
-              {pages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentPage(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125
-                    ${currentPage === index ? theme.accent : 'bg-gray-300'}`}
-                  aria-label={`Go to page ${index + 1}`}
-                />
-              ))}
-            </div>
+            {totalPages > 1 && (
+              <div className="flex space-x-2">
+                {pages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentPage(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125
+                      ${currentPage === index ? theme.accent : 'bg-gray-300'}`}
+                    aria-label={`Go to page ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
             
             <button 
               onClick={goToNextPage}
