@@ -94,18 +94,18 @@ const Flyer = ({ pages, title }) => {
   const theme = colorThemes[currentPage % colorThemes.length];
   
   return (
-    <div className="mx-auto relative w-full h-full">
-      <div className={`rounded-xl shadow-xl overflow-hidden flex flex-col w-full h-full max-h-[calc(100vh-8rem)] md:max-h-full
+    <div className="mx-auto relative w-full h-full flex flex-col" style={{ height: '100%', maxHeight: '100vh' }}>
+      <div className={`rounded-xl shadow-xl overflow-hidden flex flex-col w-full h-full
                       bg-gradient-to-br from-blue-100 via-purple-50 to-pink-50 ${theme.text} transition-all duration-500 relative
                       ${isFlipping ? 'scale-95 opacity-80' : 'scale-100 opacity-100'}`}>
         {/* Transparency overlay */}
         <div className="absolute inset-0 bg-white opacity-20 pointer-events-none rounded-xl z-0" />
         {/* Content area */}
-        <div className="relative flex flex-col flex-grow overflow-hidden p-4 sm:p-6 md:p-8">
+        <div className="relative flex flex-col h-full overflow-hidden p-4 sm:p-6 md:p-8">
           {/* Flyer content */}
-          <div className="flex-grow relative z-10 overflow-hidden">
+          <div className="flex-1 min-h-0 relative z-10 overflow-hidden">
             <div className="h-full overflow-hidden">
-              <div className="h-full overflow-y-auto overflow-x-hidden custom-scrollbar pb-4">
+              <div className="h-full overflow-y-auto overflow-x-hidden custom-scrollbar">
                 <div className={`flyer-content ${isMobile ? 'mobile-view' : ''}`}>
                   {pages[currentPage]}
                 </div>
@@ -114,7 +114,7 @@ const Flyer = ({ pages, title }) => {
           </div>
           
           {/* Navigation Controls */}
-          <div className="flex justify-between mt-3 md:mt-4">
+          <div className="flex justify-between items-center mt-3 md:mt-4 flex-shrink-0">
             <button 
               onClick={goToPreviousPage}
               disabled={currentPage === 0}
@@ -125,19 +125,17 @@ const Flyer = ({ pages, title }) => {
               <ChevronLeft size={isMobile ? 20 : 24} />
             </button>
             
-            {totalPages > 1 && (
-              <div className="flex space-x-2">
-                {pages.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentPage(index)}
-                    className={`${isMobile ? 'w-2.5 h-2.5' : 'w-3 h-3'} rounded-full transition-all duration-300 hover:scale-125
-                      ${currentPage === index ? theme.accent : 'bg-gray-300'}`}
-                    aria-label={`Go to page ${index + 1}`}
-                  />
-                ))}
-              </div>
-            )}
+            <div className="flex space-x-2">
+              {pages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentPage(index)}
+                  className={`${isMobile ? 'w-2.5 h-2.5' : 'w-3 h-3'} rounded-full transition-all duration-300 hover:scale-125
+                    ${currentPage === index ? theme.accent : 'bg-gray-300'}`}
+                  aria-label={`Go to page ${index + 1}`}
+                />
+              ))}
+            </div>
             
             <button 
               onClick={goToNextPage}

@@ -44,7 +44,6 @@ function App() {
     waermemanagement: <Waermemanagement />
   };
 
-  // Add or remove no-scroll class to body based on mobile menu state
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.classList.add('no-scroll');
@@ -70,14 +69,13 @@ function App() {
           title={getTitleForPage(activePage)}
           onMenuClick={toggleMobileMenu}
         />
-        <main className="flex-1 overflow-y-auto p-4 md:p-6">
-          <div className="h-full">
+        <main className="flex-1 overflow-hidden p-4 md:p-6">
+          <div className="h-full w-full">
             {pages[activePage]}
           </div>
         </main>
       </div>
-
-      {/* Decorative Elements (do not block pointer events) */}
+      
       <div className="fixed top-0 right-0 -mt-16 -mr-16 w-64 h-64 bg-purple-500 opacity-10 rounded-full pointer-events-none z-0"></div>
       <div className="fixed bottom-0 left-0 -mb-24 -ml-24 w-96 h-96 bg-blue-500 opacity-10 rounded-full pointer-events-none z-0"></div>
     </div>
