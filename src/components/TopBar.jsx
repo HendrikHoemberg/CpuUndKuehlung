@@ -1,22 +1,33 @@
-import { Search } from 'lucide-react';
+import { Search, Menu } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
-const TopBar = ({title}) => {
+const TopBar = ({ title, onMenuClick }) => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <header className="h-16 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-between px-6 shadow-md z-10">
-      <div className="space-x-4">
-        <h1 className="text-2xl font-bold bg-white bg-clip-text text-transparent">{title}</h1>
-      </div>
-
-      {/* TODO: Searchbar functionality */}
+    <header className="h-16 bg-gray-900 bg-opacity-90 backdrop-blur-sm flex items-center justify-between px-4 md:px-6 shadow-md z-30">
       <div className="flex items-center space-x-4">
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Suchen..."
-            className="bg-white bg-opacity-10 text-white rounded-full py-2 px-4 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 hover:bg-opacity-15 transition-all"
-          />
-          <Search size={16} className="absolute left-3.5 top-2.5 text-white opacity-70" />
-        </div>
+        {isMobile && (
+          <button 
+            onClick={onMenuClick}
+            className="p-2 rounded-full hover:bg-gray-700 transition-colors"
+            aria-label="Menü öffnen"
+          >
+            <Menu className="text-white" size={24} />
+          </button>
+        )}
+        <h1 className="text-xl md:text-2xl font-bold bg-white bg-clip-text text-transparent">
+          {title}
+        </h1>
       </div>
     </header>
   );

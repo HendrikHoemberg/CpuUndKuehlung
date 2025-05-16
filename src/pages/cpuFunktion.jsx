@@ -104,7 +104,7 @@ const CpuFunktion = () => {
                 <h4 className="font-bold text-gray-800">Intel</h4>
                 <ul className="list-disc list-inside text-sm text-gray-700">
                   <li>Core-Architektur</li>
-                  <li>Traditionell starke IPC</li>
+                  <li>Traditionell hohe Taktraten</li>
                   <li>Eigene Fertigungstechnologie</li>
                 </ul>
               </div>

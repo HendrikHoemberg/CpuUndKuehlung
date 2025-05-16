@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
 import Einfuehrung from './pages/Einfuehrung';
@@ -9,6 +9,32 @@ import Waermemanagement from './pages/waermemanagement';
 
 function App() {
   const [activePage, setActivePage] = useState('einfuehrung');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(mobile);
+      if (!mobile) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    if (isMobile) {
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   const pages = {
     einfuehrung: <Einfuehrung activePage={activePage} setActivePage={setActivePage} />,
@@ -18,17 +44,33 @@ function App() {
     waermemanagement: <Waermemanagement />
   };
 
+  // Add or remove no-scroll class to body based on mobile menu state
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+    
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isMobileMenuOpen]);
+
   return (
-    <div className="flex h-screen bg-gradient-to-br from-gray-900 to-indigo-900 text-white overflow-hidden relative">
+    <div className="flex flex-col lg:flex-row h-screen bg-gradient-to-br from-gray-900 to-indigo-900 text-white overflow-hidden relative">
       <Sidebar
         activePage={activePage}
         setActivePage={setActivePage}
+        isMobileOpen={isMobileMenuOpen}
+        onClose={closeMobileMenu}
       />
-      <div className="flex flex-col flex-1 z-10">
+      <div className="flex flex-col flex-1 z-10 overflow-hidden">
         <TopBar
           title={getTitleForPage(activePage)}
+          onMenuClick={toggleMobileMenu}
         />
-        <main className="flex-1 overflow-hidden p-6">
+        <main className="flex-1 overflow-y-auto p-4 md:p-6">
           <div className="h-full">
             {pages[activePage]}
           </div>
