@@ -102,11 +102,6 @@ const Flyer = ({ pages, title }) => {
         <div className="absolute inset-0 bg-white opacity-20 pointer-events-none rounded-xl z-0" />
         {/* Content area */}
         <div className="relative flex flex-col flex-grow overflow-hidden p-4 sm:p-6 md:p-8">
-          {/* Page number indicator */}
-          <div className="absolute top-2 right-2 bg-gray-100 rounded-full px-3 py-1 text-xs font-bold text-gray-700">
-            {currentPage + 1} / {totalPages}
-          </div>
-          
           {/* Flyer content */}
           <div className="flex-grow relative z-10 overflow-hidden">
             <div className="h-full overflow-hidden">
