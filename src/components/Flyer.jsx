@@ -101,7 +101,7 @@ const Flyer = ({ pages, title }) => {
         {/* Transparency overlay */}
         <div className="absolute inset-0 bg-white opacity-0 pointer-events-none rounded-xl z-0" />
         {/* Content area */}
-        <div className={`relative flex flex-col p-4 sm:p-6 md:p-8 ${!isMobile ? 'h-full' : ''}`}>
+        <div className={`relative flex flex-col p-2 sm:p-4 md:p-4 ${!isMobile ? 'h-full' : ''}`}>
           {/* Flyer content */}
           <div className={`relative z-10 w-full ${!isMobile ? 'flex-1 overflow-auto' : ''}`}>
             <div className={`flyer-content ${isMobile ? 'mobile-view' : ''} w-full`}>
@@ -110,7 +110,7 @@ const Flyer = ({ pages, title }) => {
           </div>
           
           {/* Navigation Controls */}
-          <div className="flex justify-between items-center mt-3 md:mt-4 flex-shrink-0">
+          <div className="flex justify-between items-center mt-1 md:mt-2 flex-shrink-0">
             <button 
               onClick={goToPreviousPage}
               disabled={currentPage === 0}
@@ -118,7 +118,7 @@ const Flyer = ({ pages, title }) => {
                          ${theme.accent} text-white shadow-lg flex items-center justify-center`}
               aria-label="Previous page"
             >
-              <ChevronLeft size={isMobile ? 20 : 24} />
+              <ChevronLeft size={20} />
             </button>
             
             <div className="flex space-x-2">
@@ -140,7 +140,7 @@ const Flyer = ({ pages, title }) => {
                         ${theme.accent} text-white shadow-lg flex items-center justify-center`}
               aria-label="Next page"
             >
-              <ChevronRight size={isMobile ? 20 : 24} />
+              <ChevronRight size={20} />
             </button>
           </div>
         </div>

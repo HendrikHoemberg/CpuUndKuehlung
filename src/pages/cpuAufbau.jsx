@@ -4,59 +4,61 @@ const CpuAufbau = () => {
   const pages = [
     // CPU Die and Package
     (
-      <div className="flex flex-col space-y-6">
-        <h2 className="text-3xl font-bold pb-2 mb-4 border-b-2 border-gray-200">CPU-Die und Package</h2>
+      <div className="flex flex-col space-y-2">
+        <h2 className="text-3xl font-bold pb-2 mb-4 border-b-2 border-gray-200">CPU-Komponenten</h2>
         
-        <div className="flex justify-center gap-10 mb-8">
-          <div className="text-center">
-            <InteractiveImage 
-              img={<img src="/CpuUndKuehlung/images/DieShot.jpg" className="w-34 h-34 object-cover rounded-lg"/>}
-              alt="CPU Die" 
-              description="Auf einem modernen CPU-Die können sich über 50 Milliarden Transistoren befinden!" 
-              position="bottom"
-            />
-            <p className="mt-2 text-gray-800">CPU-Die</p>
-            <p className="text-sm text-gray-700">Herzstück mit Milliarden von Transistoren</p>
-          </div>
-          
-          <div className="text-center">
-            <InteractiveImage 
-              img={<img src="/CpuUndKuehlung/images/Package.jpg" className="w-34 h-34 object-cover rounded-lg"/>} 
-              alt="CPU Package" 
-              description="Das Package schützt den empfindlichen Silizium-Die und hat Kontaktflächen zur Verbindung mit dem Mainboard." 
-              position="bottom"
-            />
-            <p className="mt-2 text-gray-800">CPU-Package</p>
-            <p className="text-sm text-gray-700">Schützende Hülle mit Kontaktflächen</p>
-          </div>
-          
-          <div className="text-center">
-            <InteractiveImage 
-              img={<img src="/CpuUndKuehlung/images/Socket.jpg" className="w-34 h-34 object-cover rounded-lg"/>}  
-              alt="CPU Socket" 
-              description="Moderne CPU-Sockel haben bis zu 4.000+ Kontaktpins zur Daten- und Stromübertragung." 
-              position="bottom"
-            />
-            <p className="mt-2 text-gray-800">CPU-Socket</p>
-            <p className="text-sm text-gray-700">Aufnahme der CPU auf dem Mainboard</p>
+        <div className="bg-white shadow-md p-6 rounded-xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-between">
+            <div className="rounded-lg p-4 bg-gray-50 shadow-sm text-center">
+              <h4 className="font-bold mb-2 text-gray-800">CPU-Die</h4>
+              <InteractiveImage 
+                img={<img src="/CpuUndKuehlung/images/DieShot.jpg" className="w-30 h-30 object-cover rounded-lg"/>}
+                alt="CPU Die" 
+                description="Auf einem modernen CPU-Die können sich über 50 Milliarden Transistoren befinden!" 
+                position="bottom"
+              />
+              <p className="text-gray-700 mb-2">Herzstück mit Milliarden von Transistoren</p>
+            </div>
+            
+            <div className="rounded-lg p-4 bg-gray-50 shadow-sm text-center">
+              <h4 className="font-bold mb-2 text-gray-800">CPU-Package</h4>
+              <InteractiveImage 
+                img={<img src="/CpuUndKuehlung/images/Package.jpg" className="w-30 h-30 object-cover rounded-lg"/>} 
+                alt="CPU Package" 
+                description="Das Package schützt den empfindlichen Silizium-Die und hat Kontaktflächen zur Verbindung mit dem Mainboard." 
+                position="bottom"
+              />
+              <p className="text-gray-700 mb-2">Schützende Hülle mit Kontaktflächen</p>
+            </div>
+            
+            <div className="rounded-lg p-4 bg-gray-50 shadow-sm text-center">
+              <h4 className="font-bold mb-2 text-gray-800">CPU-Socket</h4>
+              <InteractiveImage 
+                img={<img src="/CpuUndKuehlung/images/Socket.jpg" className="w-30 h-30 object-cover rounded-lg"/>}  
+                alt="CPU Socket" 
+                description="Moderne CPU-Sockel haben bis zu 4.000+ Kontaktpins zur Daten- und Stromübertragung." 
+                position="bottom"
+              />
+              <p className="text-gray-700 mb-2">Aufnahme der CPU auf dem Mainboard</p>
+            </div>
           </div>
         </div>
         
         <div className="bg-white shadow-md p-6 rounded-xl mb-6">
           <h3 className="text-2xl font-bold mb-4 text-gray-800">CPU-Bauweise:</h3>
           <div className="grid grid-cols-2 gap-6">
-            <div className="rounded-lg p-4 bg-gray-50 shadow-sm">
+            <div className="rounded-lg p-4 bg-gray-50 shadow-sm text-center">
               <h4 className="font-bold mb-2 text-gray-800">Monolithisch</h4>
-              <img src="/CpuUndKuehlung/images/IntelDie.jpg" className="w-34 h-34 object-cover rounded-lg" />
+              <img src="/CpuUndKuehlung/images/IntelDie.jpg" className="w-28 h-28 object-cover rounded-lg mx-auto" />
               <p className="text-gray-700 mb-2">Ein einzelner großer Die enthält alle CPU-Komponenten (traditioneller Ansatz von Intel)</p>
               <div className="text-xs text-gray-600">
                 <p><strong>Vorteile:</strong> Geringere Latenz zwischen Komponenten</p>
                 <p><strong>Nachteile:</strong> Geringere Ausbeute bei der Produktion, höhere Kosten</p>
               </div>
             </div>
-            <div className="rounded-lg p-4 bg-gray-50 shadow-sm">
+            <div className="rounded-lg p-4 bg-gray-50 shadow-sm text-center">
               <h4 className="font-bold mb-2 text-gray-800">Chiplet</h4>
-              <img src="/CpuUndKuehlung/images/AmdDie.jpg" className="w-34 h-34 object-cover rounded-lg" />
+              <img src="/CpuUndKuehlung/images/AmdDie.jpg" className="w-28 h-28 object-cover rounded-lg mx-auto" />
               <p className="text-gray-700 mb-2">Mehrere kleinere Dies werden zu einer CPU kombiniert (AMD Ryzen-Architektur)</p>
               <div className="text-xs text-gray-600">
                 <p><strong>Vorteile:</strong> Bessere Produktionsausbeute, kostengünstiger</p>
