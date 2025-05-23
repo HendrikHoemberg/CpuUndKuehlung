@@ -10,7 +10,7 @@ const CpuAufbau = () => {
         <div className="flex justify-center gap-10 mb-8">
           <div className="text-center">
             <InteractiveImage 
-              emoji="🧩" 
+              img={<img src="/CpuUndKuehlung/images/CPU-Die.jpg" className="w-24 h-24 object-cover rounded-lg" alt="CPU Die" />}
               alt="CPU Die" 
               description="Auf einem modernen CPU-Die können sich über 50 Milliarden Transistoren befinden!" 
               position="bottom"

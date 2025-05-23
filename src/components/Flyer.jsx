@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const InteractiveImage = ({ emoji, alt, description, position = "top" }) => {
+const InteractiveImage = ({ emoji, img, alt, description, position = "top" }) => {
   const [isHovering, setIsHovering] = useState(false);
   
   const positionClasses = {
@@ -13,8 +13,8 @@ const InteractiveImage = ({ emoji, alt, description, position = "top" }) => {
   
   return (
     <div className="relative inline-block group" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-      <div className="text-6xl cursor-pointer transition-transform duration-300 hover:scale-110 interactive-emoji">
-        {emoji}
+      <div className="cursor-pointer transition-transform duration-300 hover:scale-110 interactive-emoji">
+        {img ? img : <div className="text-6xl">{emoji}</div>}
       </div>
       
       {/* Thought bubble */}
@@ -94,17 +94,17 @@ const Flyer = ({ pages, title }) => {
   const theme = colorThemes[currentPage % colorThemes.length];
   
   return (
-    <div className="mx-auto relative w-full flex flex-col">
-      <div className={`rounded-xl shadow-xl flex flex-col w-full
+    <div className="mx-auto relative w-full flex flex-col h-full">
+      <div className={`rounded-xl shadow-xl flex flex-col w-full h-full
                       bg-gradient-to-br from-blue-100 via-purple-50 to-pink-50 ${theme.text} transition-all duration-500 relative
                       ${isFlipping ? 'scale-95 opacity-80' : 'scale-100 opacity-100'}`}>
         {/* Transparency overlay */}
         <div className="absolute inset-0 bg-white opacity-20 pointer-events-none rounded-xl z-0" />
         {/* Content area */}
-        <div className="relative flex flex-col p-4 sm:p-6 md:p-8">
+        <div className={`relative flex flex-col p-4 sm:p-6 md:p-8 ${!isMobile ? 'h-full' : ''}`}>
           {/* Flyer content */}
-          <div className="relative z-10">
-            <div className={`flyer-content ${isMobile ? 'mobile-view' : ''}`}>
+          <div className={`relative z-10 w-full ${!isMobile ? 'flex-1 overflow-auto' : ''}`}>
+            <div className={`flyer-content ${isMobile ? 'mobile-view' : ''} w-full`}>
               {pages[currentPage]}
             </div>
           </div>

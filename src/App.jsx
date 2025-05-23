@@ -57,20 +57,20 @@ function App() {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen bg-gradient-to-br from-gray-900 to-indigo-900 text-white overflow-hidden relative">
+    <div className="flex flex-col lg:flex-row lg:h-screen min-h-screen bg-gradient-to-br from-gray-900 to-indigo-900 text-white relative">
       <Sidebar
         activePage={activePage}
         setActivePage={setActivePage}
         isMobileOpen={isMobileMenuOpen}
         onClose={closeMobileMenu}
       />
-      <div className="flex flex-col flex-1 z-10 overflow-hidden">
+      <div className="flex flex-col flex-1 z-10 lg:overflow-hidden">
         <TopBar
           title={getTitleForPage(activePage)}
           onMenuClick={toggleMobileMenu}
         />
-        <main className="flex-1 overflow-hidden p-4 md:p-6">
-          <div className="h-full w-full">
+        <main className="flex-1 p-4 md:p-6 lg:overflow-hidden">
+          <div className="w-full lg:h-full">
             {pages[activePage]}
           </div>
         </main>

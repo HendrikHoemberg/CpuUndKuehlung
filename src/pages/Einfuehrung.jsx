@@ -48,9 +48,6 @@ const Einfuehrung = ({ activePage, setActivePage }) => {
 
           <div className="bg-white shadow-md p-4 rounded-xl">
             <h3 className="font-bold text-2xl mb-4 text-gray-800">Warum ist Kühlung wichtig?</h3>
-            <p className="text-lg text-gray-700 mb-4">
-              Die elektrischen Schaltkreise in CPUs erzeugen Wärme durch elektrischen Widerstand. Ohne ausreichende Kühlung können Temperaturen schnell auf über 100°C ansteigen.
-            </p>
             <div className="grid grid-cols-2 gap-4 mt-4">
               <div className="bg-green-50 rounded-lg p-4">
                 <p className="text-xl text-green-800 font-bold">Effektive Kühlung ermöglicht:</p>
