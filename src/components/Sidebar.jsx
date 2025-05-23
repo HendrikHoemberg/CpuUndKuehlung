@@ -62,7 +62,7 @@ const Sidebar = ({ activePage, setActivePage, isMobileOpen, onClose }) => {
           </div>
         )}
         {!isMobile && (
-          <div className="w-12 h-12 rounded-full flex items-center justify-center text-white ml-4 mt-2 mb-4">
+          <div className="w-12 h-12 rounded-full flex items-center justify-center text-white ml-4 mt-4 mb-4">
             <BookOpen className="text-white opacity-70" size={22} />
           </div>
         )}

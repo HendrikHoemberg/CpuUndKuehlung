@@ -13,7 +13,7 @@ const InteractiveImage = ({ emoji, img, alt, description, position = "top" }) =>
   
   return (
     <div className="relative inline-block group" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-      <div className="cursor-pointer transition-transform duration-300 hover:scale-110 interactive-emoji">
+      <div className="cursor-pointer interactive-emoji">
         {img ? img : <div className="text-6xl">{emoji}</div>}
       </div>
       
@@ -97,9 +97,9 @@ const Flyer = ({ pages, title }) => {
     <div className="mx-auto relative w-full flex flex-col h-full">
       <div className={`rounded-xl shadow-xl flex flex-col w-full h-full
                       bg-gradient-to-br from-blue-100 via-purple-50 to-pink-50 ${theme.text} transition-all duration-500 relative
-                      ${isFlipping ? 'scale-95 opacity-80' : 'scale-100 opacity-100'}`}>
+                      ${isFlipping ? 'scale-95 opacity-0' : 'scale-100 opacity-100'}`}>
         {/* Transparency overlay */}
-        <div className="absolute inset-0 bg-white opacity-20 pointer-events-none rounded-xl z-0" />
+        <div className="absolute inset-0 bg-white opacity-0 pointer-events-none rounded-xl z-0" />
         {/* Content area */}
         <div className={`relative flex flex-col p-4 sm:p-6 md:p-8 ${!isMobile ? 'h-full' : ''}`}>
           {/* Flyer content */}

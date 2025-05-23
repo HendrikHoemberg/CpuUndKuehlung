@@ -14,7 +14,7 @@ const TopBar = ({ title, onMenuClick }) => {
   }, []);
 
   return (
-    <header className="h-16 bg-gray-900 bg-opacity-90 backdrop-blur-sm flex items-center justify-between px-4 md:px-6 shadow-md z-30">
+    <header className="h-18 bg-gray-900 bg-opacity-90 backdrop-blur-sm flex items-center justify-between px-4 md:px-6 shadow-md z-30">
       <div className="flex items-center space-x-4">
         {isMobile && (
           <button 

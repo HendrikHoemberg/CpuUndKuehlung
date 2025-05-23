@@ -141,9 +141,7 @@ main > div {
 }
 
 .interactive-emoji:hover {
-  animation: wave 1.5s ease-in-out;
   display: inline-block;
-  transform-origin: 70% 70%;
 }
 
 /* Responsive flyer content styles */
