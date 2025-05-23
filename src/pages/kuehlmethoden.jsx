@@ -5,7 +5,7 @@ const Kuehlmethoden = () => {
     // Cooling Overview
     (
       <div className="flex flex-col space-y-4 h-full">
-        <h2 className="text-3xl font-bold pb-2 mb-2 border-b-2 border-gray-200">Kühlmethoden</h2>
+        <h2 className="text-3xl font-bold p-4 mb-2 rounded-lg text-white bg-gradient-to-r from-cyan-300 to-indigo-600 shadow-md text-center">Kühlmethoden</h2>
         
         <div className="grid grid-cols-2 gap-4 items-center mb-2">
           <div>
@@ -121,7 +121,7 @@ const Kuehlmethoden = () => {
     )
   ];
 
-  return <Flyer pages={pages} />;
+  return <Flyer pages={pages} pageId="kuehlmethoden" />;
 };
 
-export default Kuehlmethoden; 
+export default Kuehlmethoden;

@@ -5,7 +5,7 @@ const CpuFunktion = () => {
     // CPU Architecture Types page
     (
       <div className="flex flex-col space-y-4 h-full">
-        <h2 className="text-3xl font-bold pb-2 mb-2 border-b-2 border-gray-200">CPU-Architekturen</h2>
+        <h2 className="text-3xl font-bold p-4 mb-2 rounded-lg text-white bg-gradient-to-r from-yellow-400 to-orange-500 shadow-md text-center">CPU-Architekturen</h2>
         
         <div className="grid grid-cols-2 gap-4 mb-3">
           <div>
@@ -173,7 +173,7 @@ const CpuFunktion = () => {
     // Performance and Parallelization page
     (
       <div className="flex flex-col space-y-4 h-full">
-        <h2 className="text-3xl font-bold pb-2 mb-2 border-b-2 border-gray-200">Leistung & Parallelisierung</h2>
+        <h2 className="text-3xl font-bold p-4 mb-2 rounded-lg text-white bg-gradient-to-r from-yellow-400 to-orange-500 shadow-md text-center">Leistung & Parallelisierung</h2>
         
         <div className="grid grid-cols-2 gap-4 mb-3">
           <div className="bg-white shadow-md p-4 rounded-xl">
@@ -304,7 +304,7 @@ const CpuFunktion = () => {
     )
   ];
 
-  return <Flyer pages={pages} />;
+  return <Flyer pages={pages} pageId="cpuFunktion" />;
 };
 
-export default CpuFunktion; 
+export default CpuFunktion;

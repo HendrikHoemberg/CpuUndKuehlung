@@ -29,7 +29,7 @@ const InteractiveImage = ({ emoji, img, alt, description, position = "top" }) =>
   );
 };
 
-const Flyer = ({ pages, title }) => {
+const Flyer = ({ pages, title, pageId }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isFlipping, setIsFlipping] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -82,8 +82,17 @@ const Flyer = ({ pages, title }) => {
     }
   };
 
-  // Color themes
-  const colorThemes = [
+  // Page color mapping from sidebar
+  const pageColors = {
+    'einfuehrung': { text: "text-gray-800", accent: "bg-gradient-to-r from-blue-400 to-purple-500" },
+    'cpuAufbau': { text: "text-gray-800", accent: "bg-gradient-to-r from-green-400 to-teal-500" },
+    'cpuFunktion': { text: "text-gray-800", accent: "bg-gradient-to-r from-yellow-400 to-orange-500" },
+    'kuehlmethoden': { text: "text-gray-800", accent: "bg-gradient-to-r from-cyan-300 to-indigo-600" },
+    'waermemanagement': { text: "text-gray-800", accent: "bg-gradient-to-r from-amber-600 to-rose-600" },
+  };
+  
+  // Default theme if pageId is not provided
+  const defaultThemes = [
     { text: "text-gray-800", accent: "bg-blue-500" },
     { text: "text-gray-800", accent: "bg-green-500" },
     { text: "text-gray-800", accent: "bg-orange-500" },
@@ -91,7 +100,7 @@ const Flyer = ({ pages, title }) => {
     { text: "text-gray-800", accent: "bg-red-500" },
   ];
   
-  const theme = colorThemes[currentPage % colorThemes.length];
+  const theme = pageId && pageColors[pageId] ? pageColors[pageId] : defaultThemes[currentPage % defaultThemes.length];
   
   return (
     <div className="mx-auto relative w-full flex flex-col h-full">
@@ -110,7 +119,7 @@ const Flyer = ({ pages, title }) => {
           </div>
           
           {/* Navigation Controls */}
-          <div className="flex justify-between items-center mt-1 md:mt-2 flex-shrink-0">
+          <div className="flex justify-between items-center mt-2 md:mt-2 flex-shrink-0">
             <button 
               onClick={goToPreviousPage}
               disabled={currentPage === 0}

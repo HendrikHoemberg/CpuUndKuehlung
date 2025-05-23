@@ -75,7 +75,7 @@ const Einfuehrung = ({ activePage, setActivePage }) => {
   ];
 
 
-  return <Flyer pages={pages} />;
+  return <Flyer pages={pages} pageId="einfuehrung" title="Einführung" />;
 };
 
 export default Einfuehrung;
