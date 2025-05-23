@@ -94,22 +94,18 @@ const Flyer = ({ pages, title }) => {
   const theme = colorThemes[currentPage % colorThemes.length];
   
   return (
-    <div className="mx-auto relative w-full h-full flex flex-col" style={{ height: '100%', maxHeight: '100vh' }}>
-      <div className={`rounded-xl shadow-xl overflow-hidden flex flex-col w-full h-full
+    <div className="mx-auto relative w-full flex flex-col">
+      <div className={`rounded-xl shadow-xl flex flex-col w-full
                       bg-gradient-to-br from-blue-100 via-purple-50 to-pink-50 ${theme.text} transition-all duration-500 relative
                       ${isFlipping ? 'scale-95 opacity-80' : 'scale-100 opacity-100'}`}>
         {/* Transparency overlay */}
         <div className="absolute inset-0 bg-white opacity-20 pointer-events-none rounded-xl z-0" />
         {/* Content area */}
-        <div className="relative flex flex-col h-full overflow-hidden p-4 sm:p-6 md:p-8">
+        <div className="relative flex flex-col p-4 sm:p-6 md:p-8">
           {/* Flyer content */}
-          <div className="flex-1 min-h-0 relative z-10 overflow-hidden">
-            <div className="h-full overflow-hidden">
-              <div className="h-full overflow-y-auto overflow-x-hidden custom-scrollbar">
-                <div className={`flyer-content ${isMobile ? 'mobile-view' : ''}`}>
-                  {pages[currentPage]}
-                </div>
-              </div>
+          <div className="relative z-10">
+            <div className={`flyer-content ${isMobile ? 'mobile-view' : ''}`}>
+              {pages[currentPage]}
             </div>
           </div>
           
