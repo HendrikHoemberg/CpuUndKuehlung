@@ -11,7 +11,7 @@ const Kuehlmethoden = () => {
           <div className="grid grid-cols-3 gap-4 justify-items-center">
             <div className="text-center">
               <InteractiveImage 
-                img={<img src="/CpuUndKuehlung/images/AirCooling.jpg" className="w-50 h-50 object-cover"/>}
+                img={<img src="/CpuUndKuehlung/images/AirCooling.jpg" className="w-50 h-50 object-cover rounded-lg"/>}
                 alt="Air Cooling" 
                 description="Luftkühlung ist kostengünstig, aber oft lauter als Alternativen."
                 position="bottom"
@@ -21,7 +21,7 @@ const Kuehlmethoden = () => {
             
             <div className="text-center">
               <InteractiveImage 
-                img={<img src="/CpuUndKuehlung/images/WaterCooling.jpg" className="w-50 h-50 object-cover"/>}
+                img={<img src="/CpuUndKuehlung/images/WaterCooling.jpg" className="w-50 h-50 object-cover rounded-lg"/>}
                 alt="Water Cooling" 
                 description="Wasserkühlungen können bis zu 35% mehr Wärme abführen als Luftkühler."
                 position="bottom"
@@ -31,7 +31,7 @@ const Kuehlmethoden = () => {
             
             <div className="text-center">
               <InteractiveImage 
-                img={<img src="/CpuUndKuehlung/images/ExoticCooling.jpg" className="w-50 h-50 object-cover"/>}
+                img={<img src="/CpuUndKuehlung/images/ExoticCooling.jpg" className="w-50 h-50 object-cover rounded-lg"/>}
                 alt="Exotic Cooling" 
                 description="Bei Übertaktungsrekorden wird oft flüssiger Stickstoff bei -196°C verwendet."
                 position="bottom"

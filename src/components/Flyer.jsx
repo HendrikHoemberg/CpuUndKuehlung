@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useSwipeable } from 'react-swipeable';
 
 const InteractiveImage = ({ emoji, img, alt, description, position = "top" }) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -113,9 +114,19 @@ const Flyer = ({ pages, title, pageId }) => {
   
   const theme = pageId && pageColors[pageId] ? pageColors[pageId] : defaultThemes[currentPage % defaultThemes.length];
   
+  // Configure swipe handlers
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => goToNextPage(),
+    onSwipedRight: () => goToPreviousPage(),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: false
+  });
+
   return (
     <div className="mx-auto relative w-full flex flex-col h-full">
-      <div className={`rounded-xl shadow-xl flex flex-col w-full h-full
+      <div 
+        {...swipeHandlers}
+        className={`rounded-xl shadow-xl flex flex-col w-full h-full
                       bg-gradient-to-br from-blue-100 via-purple-50 to-pink-50 ${theme.text} transition-all duration-500 relative
                       ${isFlipping ? 'scale-95 opacity-0' : 'scale-100 opacity-100'}`}>
         {/* Transparency overlay */}
