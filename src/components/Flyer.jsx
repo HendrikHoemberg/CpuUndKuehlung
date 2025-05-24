@@ -114,7 +114,6 @@ const Flyer = ({ pages, title, pageId }) => {
   
   const theme = pageId && pageColors[pageId] ? pageColors[pageId] : defaultThemes[currentPage % defaultThemes.length];
   
-  // Configure swipe handlers
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => goToNextPage(),
     onSwipedRight: () => goToPreviousPage(),
