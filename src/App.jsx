@@ -64,7 +64,7 @@ function App() {
         isMobileOpen={isMobileMenuOpen}
         onClose={closeMobileMenu}
       />
-      <div className="flex flex-col flex-1 z-10 lg:overflow-hidden">
+      <div className={`flex flex-col flex-1 z-10 lg:overflow-hidden ${isMobile ? 'pt-16' : ''}`}>
         <TopBar
           title={getTitleForPage(activePage)}
           onMenuClick={toggleMobileMenu}

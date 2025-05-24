@@ -7,70 +7,58 @@ const Kuehlmethoden = () => {
       <div className="flex flex-col space-y-4 h-full">
         <h2 className="text-3xl font-bold p-4 mb-2 rounded-lg text-white bg-gradient-to-r from-cyan-300 to-indigo-600 shadow-md text-center">Kühlmethoden</h2>
         
-        <div className="grid grid-cols-2 gap-4 items-center mb-2">
-          <div>
-            <p className="text-lg mb-2 text-gray-800">
-              Mit steigender CPU-Leistung nimmt auch die Abwärme zu. Moderne Kühlsysteme sorgen für optimale Betriebstemperaturen und maximale Leistung.
-            </p>
-            <p className="text-lg text-gray-800">
-              Verschiedene Kühlmethoden bieten unterschiedliche Vor- und Nachteile in Bezug auf Effizienz, Lautstärke und Kosten.
-            </p>
-          </div>
-        </div>
-        
         <div className="bg-white shadow-md p-4 rounded-xl mb-2">
-          <h3 className="text-xl font-bold mb-3 text-gray-800">Kühlungsarten im Überblick</h3>
           <div className="grid grid-cols-3 gap-4 justify-items-center">
             <div className="text-center">
               <InteractiveImage 
-                emoji="🌡️" 
+                img={<img src="/CpuUndKuehlung/images/AirCooling.jpg" className="w-50 h-50 object-cover"/>}
                 alt="Air Cooling" 
                 description="Luftkühlung ist kostengünstig, aber oft lauter als Alternativen."
+                position="bottom"
               />
-              <p className="mt-1 text-gray-800">Luftkühlung</p>
-              <p className="text-xs text-gray-700">Einfach & kostengünstig</p>
+              <p className="mt-1 text-gray-800"><strong>Luftkühlung</strong></p>
             </div>
             
             <div className="text-center">
               <InteractiveImage 
-                emoji="💧" 
+                img={<img src="/CpuUndKuehlung/images/WaterCooling.jpg" className="w-50 h-50 object-cover"/>}
                 alt="Water Cooling" 
                 description="Wasserkühlungen können bis zu 35% mehr Wärme abführen als Luftkühler."
+                position="bottom"
               />
-              <p className="mt-1 text-gray-800">Wasserkühlung</p>
-              <p className="text-xs text-gray-700">Leiser & effizienter</p>
+              <p className="mt-1 text-gray-800"><strong>Wasserkühlung</strong></p>
             </div>
             
             <div className="text-center">
               <InteractiveImage 
-                emoji="❄️" 
+                img={<img src="/CpuUndKuehlung/images/ExoticCooling.jpg" className="w-50 h-50 object-cover"/>}
                 alt="Exotic Cooling" 
                 description="Bei Übertaktungsrekorden wird oft flüssiger Stickstoff bei -196°C verwendet."
+                position="bottom"
               />
-              <p className="mt-1 text-gray-800">Exotische Kühlung</p>
-              <p className="text-xs text-gray-700">Für Extremsituationen</p>
+              <p className="mt-1 text-gray-800"><strong>Exotische Kühlung</strong></p>
             </div>
           </div>
         </div>
         
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-white shadow-md p-4 rounded-xl">
-            <h3 className="text-xl font-bold mb-2 text-gray-800">Warum kühlen wir die CPU?</h3>
+            <h3 className="text-xl font-bold mb-2 text-gray-800">Vor- und Nachteile verschiedener Kühlmethoden</h3>
             <p className="text-sm text-gray-700 mb-2">
-              Eine CPU erzeugt während des Betriebs Wärme aufgrund des elektrischen Widerstands in den Transistoren. Diese Wärme muss abgeführt werden, um:
+              Jede Kühlmethode hat ihre Stärken und Schwächen, die je nach Anwendungsfall relevant sind.
             </p>
             <div className="space-y-1 text-sm">
-              <div className="flex items-center bg-red-50 p-2 rounded-lg">
-                <span className="text-xl mr-2">🚫</span>
-                <p className="text-gray-800"><strong>Überhitzung zu vermeiden</strong> - CPUs drosseln automatisch bei ca. 95-105°C</p>
+              <div className="flex items-center bg-gray-50 p-2 rounded-lg">
+                <span className="text-xl mr-2">💨</span>
+                <p className="text-gray-800"><strong>Luftkühlung</strong> - Kosteneffizient und zuverlässig, aber oft lauter und weniger effektiv bei Hochleistungs-CPUs</p>
               </div>
-              <div className="flex items-center bg-blue-50 p-2 rounded-lg">
-                <span className="text-xl mr-2">⚡</span>
-                <p className="text-gray-800"><strong>Maximale Leistung</strong> - Höhere Taktfrequenzen bei niedrigeren Temperaturen</p>
+              <div className="flex items-center bg-gray-50 p-2 rounded-lg">
+                <span className="text-xl mr-2">💧</span>
+                <p className="text-gray-800"><strong>Wasserkühlung</strong> - Leiser und leistungsfähiger, aber teurer und mit Ausfallrisiko durch Leckagen</p>
               </div>
-              <div className="flex items-center bg-green-50 p-2 rounded-lg">
-                <span className="text-xl mr-2">⏱️</span>
-                <p className="text-gray-800"><strong>Langlebigkeit</strong> - Kühlere Komponenten haben eine längere Lebensdauer</p>
+              <div className="flex items-center bg-gray-50 p-2 rounded-lg">
+                <span className="text-xl mr-2">❄️</span>
+                <p className="text-gray-800"><strong>Exotische Kühlung</strong> - Extreme Kühlleistung für Übertaktung, aber unpraktisch für den Dauerbetrieb</p>
               </div>
             </div>
           </div>

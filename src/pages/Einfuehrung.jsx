@@ -5,8 +5,8 @@ import { Cpu, Fan, Thermometer, Zap } from 'lucide-react';
 const navItems = [
   { id: 'cpuAufbau', icon: Cpu, label: 'CPU-Aufbau', color: 'from-green-400 to-teal-500' },
   { id: 'cpuFunktion', icon: Zap, label: 'CPU-Funktionsweise', color: 'from-yellow-400 to-orange-500' },
-  { id: 'kuehlmethoden', icon: Fan, label: 'Kühlmethoden', color: 'from-cyan-300 to-indigo-600' },
   { id: 'waermemanagement', icon: Thermometer, label: 'Wärmemanagement', color: 'from-amber-600 to-rose-600' },
+  { id: 'kuehlmethoden', icon: Fan, label: 'Kühlmethoden', color: 'from-cyan-300 to-indigo-600' },
 ];
 
 const Einfuehrung = ({ activePage, setActivePage }) => {

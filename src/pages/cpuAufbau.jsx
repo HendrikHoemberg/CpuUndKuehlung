@@ -7,14 +7,14 @@ const CpuAufbau = () => {
       <div className="flex flex-col space-y-2">
         <h2 className="text-3xl font-bold p-4 mb-4 rounded-lg text-white bg-gradient-to-r from-green-400 to-teal-500 shadow-md text-center">CPU-Komponenten</h2>
         
-        <div className="bg-white shadow-md p-6 rounded-xl">
+        <div className="p-6 rounded-xl">
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-between">
             <div>
-              <h4 className="text-xl font-bold mb-2 text-gray-800 text-center">CPU-Die</h4>
-              <div className="rounded-lg p-4 bg-gray-50 shadow-sm text-center">
+              <h4 className="text-2xl font-bold mb-2 text-gray-800 text-center text-shadow-md">CPU-Die</h4>
+              <div className="rounded-lg p-4 bg-white shadow-sm text-center">
                 <InteractiveImage 
-                  img={<img src="/CpuUndKuehlung/images/DieShot.jpg" className="w-30 h-30 md:w-90 md:h-90 object-cover rounded-lg shadow-xl m-2"/>}
+                  img={<img src="/CpuUndKuehlung/images/DieShot.jpg" className="w-30 h-30 md:w-90 md:h-90 object-cover rounded-lg shadow-md/50 m-2"/>}
                   alt="CPU Die" 
                   description="Auf einem modernen CPU-Die können sich über 50 Milliarden Transistoren befinden!" 
                   position="bottom"
@@ -29,10 +29,10 @@ const CpuAufbau = () => {
             </div>
             
             <div>
-              <h4 className="text-xl font-bold mb-2 text-gray-800 text-center">CPU-Package</h4>
-              <div className="rounded-lg p-4 bg-gray-50 shadow-sm text-center">
+              <h4 className="text-2xl font-bold mb-2 text-gray-800 text-center text-shadow-md">CPU-Package</h4>
+              <div className="rounded-lg p-4 bg-white shadow-sm text-center">
                 <InteractiveImage 
-                  img={<img src="/CpuUndKuehlung/images/Package.jpg" className="w-30 h-30 md:w-90 md:h-90 object-cover rounded-lg shadow-xl m-2"/>} 
+                  img={<img src="/CpuUndKuehlung/images/Package.jpg" className="w-30 h-30 md:w-90 md:h-90 object-cover rounded-lg shadow-md/50 m-2"/>} 
                   alt="CPU Package" 
                   description="Das Package schützt den empfindlichen Silizium-Die und hat Kontaktflächen zur Verbindung mit dem Mainboard." 
                   position="bottom"
@@ -47,10 +47,10 @@ const CpuAufbau = () => {
             </div>
             
             <div>
-              <h4 className="text-xl font-bold mb-2 text-gray-800 text-center">CPU-Socket</h4>
-              <div className="rounded-lg p-4 bg-gray-50 shadow-sm text-center">
+              <h4 className="text-2xl font-bold mb-2 text-gray-800 text-center text-shadow-md">CPU-Socket</h4>
+              <div className="rounded-lg p-4 bg-white shadow-sm text-center">
                 <InteractiveImage 
-                  img={<img src="/CpuUndKuehlung/images/Socket.jpg" className="w-30 h-30 md:w-90 md:h-90 object-cover rounded-lg shadow-xl m-2"/>}  
+                  img={<img src="/CpuUndKuehlung/images/Socket.jpg" className="w-30 h-30 md:w-90 md:h-90 object-cover rounded-lg shadow-md/50 m-2"/>}  
                   alt="CPU Socket" 
                   description="Moderne CPU-Sockel haben bis zu 4.000+ Kontaktpins zur Daten- und Stromübertragung." 
                   position="bottom"
@@ -73,12 +73,12 @@ const CpuAufbau = () => {
       <div className="flex flex-col space-y-2">
         <h2 className="text-3xl font-bold p-4 mb-4 rounded-lg text-white bg-gradient-to-r from-green-400 to-teal-500 shadow-md text-center">CPU-Bauweise</h2>
   
-        <div className="bg-white shadow-md p-6 rounded-xl mb-6">
+        <div className="p-6 rounded-xl mb-6">
           <div className="grid grid-cols-2 gap-6">
             <div>
-              <h4 className="text-xl font-bold mb-2 text-gray-800 text-center">Monolithisch</h4>
-              <div className="rounded-lg p-4 bg-gray-50 shadow-sm text-center">
-                <img src="/CpuUndKuehlung/images/IntelDie.jpg" className="w-28 h-28 md:w-90 md:h-90 object-cover rounded-lg mx-auto shadow-xl m-2" />
+              <h4 className="text-2xl font-bold mb-2 text-gray-800 text-center text-shadow-md">Monolithisch</h4>
+              <div className="rounded-lg p-4 bg-white shadow-sm text-center">
+                <img src="/CpuUndKuehlung/images/IntelDie.jpg" className="w-28 h-28 md:w-90 md:h-90 object-cover rounded-lg mx-auto shadow-md/50 m-2" />
                 <p className="text-gray-700 mb-2">Ein einzelner großer Die enthält alle CPU-Komponenten (traditioneller Ansatz von Intel)</p>
                 <div className="text-xs text-gray-600">
                   <p><strong>Vorteile:</strong> Geringere Latenz zwischen Komponenten</p>
@@ -87,9 +87,9 @@ const CpuAufbau = () => {
               </div>
             </div>
             <div>
-              <h4 className="text-xl font-bold mb-2 text-gray-800 text-center">Chiplet</h4>
-              <div className="rounded-lg p-4 bg-gray-50 shadow-sm text-center">
-                <img src="/CpuUndKuehlung/images/AmdDie.jpg" className="w-28 h-28 md:w-90 md:h-90 object-cover rounded-lg mx-auto shadow-xl m-2" />
+              <h4 className="text-2xl font-bold mb-2 text-gray-800 text-center text-shadow-md">Chiplet</h4>
+              <div className="rounded-lg p-4 bg-white shadow-sm text-center">
+                <img src="/CpuUndKuehlung/images/AmdDie.jpg" className="w-28 h-28 md:w-90 md:h-90 object-cover rounded-lg mx-auto shadow-md/50 m-2" />
                 <p className="text-gray-700 mb-2">Mehrere kleinere Dies werden zu einer CPU kombiniert (AMD Ryzen-Architektur)</p>
                 <div className="text-xs text-gray-600">
                   <p><strong>Vorteile:</strong> Bessere Produktionsausbeute, kostengünstiger</p>
@@ -124,7 +124,7 @@ const CpuAufbau = () => {
             <h3 className="text-xl font-bold mb-3 flex items-center text-gray-800">
               <span className="text-2xl mr-2">🎮</span> Steuerwerk
             </h3>
-            <p className="mb-2 text-gray-700">Die Control Unit (CU) ist verantwortlich für:</p>
+            <p className="mb-2 text-gray-700">Das Steuerwerk ist verantwortlich für:</p>
             <ul className="list-disc list-inside text-gray-700">
               <li>Befehlsinterpretation</li>
               <li>Steuerung des Befehlszyklus</li>
@@ -136,7 +136,7 @@ const CpuAufbau = () => {
             <h3 className="text-xl font-bold mb-3 flex items-center text-gray-800">
               <span className="text-2xl mr-2">💾</span> Register
             </h3>
-            <p className="mb-2 text-gray-700">CPU-Register sind ultraschnelle Speicherplätze:</p>
+            <p className="mb-2 text-gray-700">CPU-Register sind sehr schnelle Speicherplätze:</p>
             <ul className="list-disc list-inside text-gray-700">
               <li><b>Allzweckregister:</b> Für temporäre Daten und Berechnungen</li>
               <li><b>Spezialregister:</b> Programmzähler, Stackpointer, etc.</li>

@@ -26,8 +26,8 @@ const Sidebar = ({ activePage, setActivePage, isMobileOpen, onClose }) => {
     { id: 'einfuehrung', icon: Home, tooltip: 'Einführung', color: 'from-blue-400 to-purple-500' },
     { id: 'cpuAufbau', icon: Cpu, tooltip: 'CPU-Aufbau', color: 'from-green-400 to-teal-500' },
     { id: 'cpuFunktion', icon: Zap, tooltip: 'CPU-Funktionsweise', color: 'from-yellow-400 to-orange-500' },
-    { id: 'kuehlmethoden', icon: Fan, tooltip: 'Kühlmethoden', color: 'from-cyan-300 to-indigo-600' },
     { id: 'waermemanagement', icon: Thermometer, tooltip: 'Wärmemanagement', color: ' from-amber-600 to-rose-600' },
+    { id: 'kuehlmethoden', icon: Fan, tooltip: 'Kühlmethoden', color: 'from-cyan-300 to-indigo-600' },
   ];
 
   const sidebarClasses = `

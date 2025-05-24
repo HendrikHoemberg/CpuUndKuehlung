@@ -13,8 +13,10 @@ const TopBar = ({ title, onMenuClick }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const headerClasses = `h-18 bg-gray-900 bg-opacity-90 backdrop-blur-sm flex items-center justify-between px-4 md:px-6 shadow-md z-30 ${isMobile ? 'fixed top-0 left-0 right-0' : ''}`;
+
   return (
-    <header className="h-18 bg-gray-900 bg-opacity-90 backdrop-blur-sm flex items-center justify-between px-4 md:px-6 shadow-md z-30">
+    <header className={headerClasses}>
       <div className="flex items-center space-x-4">
         {isMobile && (
           <button 

@@ -61,6 +61,19 @@ const Flyer = ({ pages, title, pageId }) => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [currentPage]);
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const scrollTimer = setTimeout(() => {
+      window.scrollTo(0, 0);
+      
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 50);
+    }, 50);
+    
+    return () => clearTimeout(scrollTimer);
+  }, [currentPage]);
 
   const goToNextPage = () => {
     if (currentPage < pages.length - 1) {
@@ -82,7 +95,6 @@ const Flyer = ({ pages, title, pageId }) => {
     }
   };
 
-  // Page color mapping from sidebar
   const pageColors = {
     'einfuehrung': { text: "text-gray-800", accent: "bg-gradient-to-r from-blue-400 to-purple-500" },
     'cpuAufbau': { text: "text-gray-800", accent: "bg-gradient-to-r from-green-400 to-teal-500" },
@@ -91,7 +103,6 @@ const Flyer = ({ pages, title, pageId }) => {
     'waermemanagement': { text: "text-gray-800", accent: "bg-gradient-to-r from-amber-600 to-rose-600" },
   };
   
-  // Default theme if pageId is not provided
   const defaultThemes = [
     { text: "text-gray-800", accent: "bg-blue-500" },
     { text: "text-gray-800", accent: "bg-green-500" },
