@@ -117,8 +117,19 @@ const Flyer = ({ pages, title, pageId }) => {
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => goToNextPage(),
     onSwipedRight: () => goToPreviousPage(),
-    preventDefaultTouchmoveEvent: true,
-    trackMouse: false
+    preventDefaultTouchmoveEvent: false, 
+    trackMouse: false,
+    delta: 50, 
+    swipeDuration: 500, 
+    touchEventOptions: { passive: false }, 
+    filterTaps: true,
+    trackTouch: true,
+    rotationAngle: 0,
+    onSwiping: (eventData) => {
+      if (Math.abs(eventData.deltaX) > Math.abs(eventData.deltaY) * 1.5) {
+        eventData.event.preventDefault();
+      }
+    }
   });
 
   return (
