@@ -167,7 +167,7 @@ const CpuFunktion = () => {
                 <li><strong>Fertigung:</strong> Externe Fertigung (TSMC)</li>
               </ul>
               <div className="mt-2 bg-red-50 p-2 rounded-lg text-xs">
-                <p>Das innovative Chiplet-Design von AMD ermöglicht kostengünstige Produktion von Prozessoren mit vielen Kernen, da kleinere Chips eine höhere Ausbeute in der Produktion haben.</p>
+                <p>Das Chiplet-Design von AMD ermöglicht kostengünstige Produktion von Prozessoren mit vielen Kernen, da kleinere Chips eine höhere Ausbeute in der Produktion haben.</p>
               </div>
             </div>
             
